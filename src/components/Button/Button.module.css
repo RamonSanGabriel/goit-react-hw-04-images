@@ -1,0 +1,27 @@
+.button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #48705e;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  font-weight: 700;
+  width: 20%;
+  margin: 0 auto;
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+    0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+}
+
+.button:hover,
+.button:focus {
+  background-color: #f0f8ff;
+  color: #000;
+  transform: scale(1.05);
+  border: 2px solid #6fd083a9;
+}
+
+.button:active {
+  transform: scale(0.95);
+}
