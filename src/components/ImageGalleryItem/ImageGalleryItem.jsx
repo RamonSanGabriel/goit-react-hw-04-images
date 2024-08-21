@@ -1,29 +1,31 @@
-import { Component } from 'react';
+import { useState } from 'react';
 import ImageModal from 'components/Modal/Modal';
 import styles from './ImageGalleryItem.module.css';
+import PropTypes from 'prop-types';
 
-export class ImageGalleryItem extends Component {
-  state = {
-    selectedImage: null,
+export const ImageGalleryItem = ({ webformatURL, tags }) => {
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const handleOpenModal = () => {
+    setSelectedImage(this.props.largeImageURL);
   };
-  handleOpenModal = () => {
-    this.setState({ selectedImage: this.props.largeImageURL });
+  const handleCloseModal = () => {
+    setSelectedImage(null);
   };
-  handleCloseModal = () => {
-    this.setState({ selectedImage: null });
-  };
-  render() {
-    const { selectedImage } = this.state;
-    const { webformatURL, tags } = this.props;
-    return (
-      <li className={styles.galleryItem} onClick={this.handleOpenModal}>
-        <img src={webformatURL} alt={tags} />
-        <ImageModal
-          modalClose={this.handleCloseModal}
-          modalOpen={selectedImage !== null}
-          image={selectedImage}
-        />
-      </li>
-    );
-  }
-}
+
+  return (
+    <li className={styles.galleryItem} onClick={handleOpenModal}>
+      <img src={webformatURL} alt={tags} />
+      <ImageModal
+        modalClose={handleCloseModal}
+        modalOpen={selectedImage !== null}
+        image={selectedImage}
+      />
+    </li>
+  );
+};
+ImageGalleryItem.propTypes = {
+  webformatURL: PropTypes.string.isRequired,
+  tags: PropTypes.string.isRequired,
+  largeImageURL: PropTypes.string.isRequired,
+};
