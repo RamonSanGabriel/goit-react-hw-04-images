@@ -7,7 +7,7 @@ export const ImageGalleryItem = ({ webformatURL, tags }) => {
   const [selectedImage, setSelectedImage] = useState(null);
 
   const handleOpenModal = () => {
-    setSelectedImage(this.props.largeImageURL);
+    setSelectedImage(webformatURL);
   };
   const handleCloseModal = () => {
     setSelectedImage(null);
